@@ -2,23 +2,15 @@ package WithLossResult;
 
 public class InterferenceThread extends Thread {
     private final InterferenceExample checker;
-    private static int i;
 
     InterferenceThread(InterferenceExample checker) {
         this.checker = checker;
     }
 
-    private void increment() {
-        i++;
-    }
-
-    int getI() {
-        return i;
-    }
-
+    @Override
     public void run() {
         while (!checker.stop()) {
-            increment();
+            checker.incrementResult();
         }
     }
 }
